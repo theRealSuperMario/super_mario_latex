@@ -1,0 +1,102 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{super_math}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{neuralnetwork}
+\usepackage{sidecap}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+
+
+\title{Command Overview}
+\author{theRealSuperMario}
+
+
+%%% --- commands ---
+
+%network notation with nonlinearities
+\usepackage{siunitx}
+\usepackage{pdflscape}
+
+
+\begin{document}
+\maketitle
+\begin{abstract}
+\end{abstract}
+
+\begin{landscape}
+\thispagestyle{empty}
+\begin{table}  
+	\fontsize{7}{9}\selectfont
+	% \tiny
+	\begin{tabular}{l | c | c | c }
+		-		& Befehl in der Vorlage 		& Wirkung 			& Anmerkungen 	\\
+		\hline
+		\textbf{Konventionen zur Darstellung}	&	-		&		-		&	-	\\
+		Zahlen mit Einheit	& \verb| \SI{1,234}{\milli\gram\per\tesla} |	& $ \SI{1,234}{\milli\gram\per\tesla} $	&	 	\\
+		Zahlen ohne Einheit	& \verb|\num{8}|	&	$\num{8}$		& beispielsweise für Blendenzahl	\\
+		Abkürzungen (Einfügen eines kleinen Abstandes)	& \verb| z.\,B. |	& z.\,B.		&		\\
+		
+		\textbf{Mathematische Funktionen} &			&				&			\\
+		trigonometrische Funktionen  	& \verb| \sin(x), \cos(x), \tan(x) |	& $\sin(x), \cos(x), \tan(x)$	& Schrift wird aufrecht gesetzt \\
+		
+		\textbf{Lineare Algebra aka Matrizen} &			&				&			\\
+		Vektoren, Matrizen --> \textbf{fett}	& \verb|\vec{A}|	& $\vec{A}$			& Im Endeffekt nur \verb|\boldsymbol{A}|	\\
+		Einheitsmatrix			& \verb| \II |	&	$\II$	& mit DeclarMathOperator erzeugt. \\
+		transponierte Matrix		& \verb| \vec{A}^\TT |	&	$\vec{A}^\TT$	& im Enddeffekt nur \verb|\mathrm{T}|	\\    
+		Norm eines Vektors		& \verb| \norm{x} |		&	$\norm{x}$ & - \\
+		
+		\textbf{Integrale}	& 	& 	&  \\
+		1D- uneigentliche Integrale 	& \verb+ \infint f(x) \dd x +	& $ \infint f(x) \dd x $	& den \verb|\dd| Befehl nicht vergessen. \\
+		1D - uneigentliches Integral Typ 2	& \verb| \uint{f(x)} \dd x |	& $ \uint{f(x)} \dd x $ 	& - \\
+		1D - Integral mit oberer und unterer Grenze	& \verb| \lint{x}{a}{b}{f(x)} \dd x |		& $ \lint{x}{a}{b}{f(x)} \dd x $	&  \\
+		
+		\textbf{Summen} &  &  &  \\
+		Reihe von $k=-\infty$ bis $\infty$	&	\verb| \usum{k}{a_k x^k} |	&	$\usum{k}{a_k x^k}$	& \\
+		Summe von k= a bis b			&	\verb| \lsum{k}{1}{\infty}{ \frac{1}{k^2} } |	& $ \lsum{k}{1}{\infty}{ \frac{1}{k^2} } $ 	& \\
+		
+		Index für Abtastung	& \verb| f_\abtast |	& $f_\abtast$	& im Endeffekt \verb|\mathrm{A}|	\\
+		Erwartungswert		& \verb| \E{x} |			&	$\E{x}$	&	\\
+		
+		\textbf{Mathematische Zeichen und Symbole}	& & &\\
+		imaginäre Einheit, eulersche Zahl & \verb| \ii, \jj, \ee |	&      $\ii, \jj, \ee $ & 	\\ 
+		Real und Imaginärteil	& \verb|\Re{s}, \Im{s}|		& 	$\Real{s}, \Imag{s}$ & \\
+		Integrale 1D, 2D, 3D & \verb|\int, \iint, \iiint|	&	$\int, \iint, \iiint$ & \\
+		Differenziale beim Integral	&	\verb| \dd x |	&	$ \dd x $	& \\
+		Zahlenmengen R,N,Z,C,Q		&	\verb| \rz, \nz, \gz, \cz, \qz |	&	$\rz, \nz, \gz, \cz, \qz$ & \\
+		(soll gelten)		&	\verb| \sbe |	& $a \sbe b$	& \\
+		entspricht		&	\verb| \entspr |	& $a \entspr b $	&	\\
+		\verb|10^something|			&	\verb| \pow{2} |	& $ \pow{2} $	&	\\
+		
+		\textbf{Transformationen} & & &\\
+		Fourier-, Laplace,- Z-Transformation: Mathematikschrift mathcal		& \verb| \FT, \iFT|	& $\FT$ , ~~  $\iFT$& \\
+		Doetschsymbol Zeitbereich - Laplace-/Fourier-/Z-bereich horizontal	& \verb|f(t) \TZ F(f)|			& $f(t) \TZ F(f)$	& \\
+		Doetschsymbol Laplace-/Fourier-/Z-bereich - Zeitbereich horizontal	& \verb|F(f) \ZT f(t)|		& $F(f) \ZT f(t) $	& \\
+		
+		%Doetschsymbol Zeitbereich - Laplace-/Fourier-/Z-bereich vertikal	& \verb|f(t) \vTZ F(f)|			& $f(t) \vTZ F(f)$	& \\
+		%Doetschsymbol Laplace-/Fourier-/Z-bereich - Zeitbereich vertikal	& \verb|F(f) \vZT f(t)|			& $F(f) \vZT f(t) $	& \\
+		
+		Doetschsymbol 2D Zeitbereich - Laplace-/Fourier-/Z-bereich horizontal	& \verb| \TZz | 		& $\TZz$	& analog mit \verb| \ZTz, \vTZz, \vZTz | \\
+		
+	\end{tabular}
+\end{table}  
+\end{landscape}
+\end{document}
