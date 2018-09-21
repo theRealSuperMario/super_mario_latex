@@ -176,9 +176,13 @@
 
 % Matrizen (ben"otigt empheq v 2.11)
 %\ifiiit@empheq
-      \newcommand{\cmatrix}[1]{\begin{bmatrix*}[c] #1 \end{bmatrix*}}
-      \newcommand{\rmatrix}[1]{\begin{bmatrix*}[r] #1 \end{bmatrix*}}
-      \newcommand{\lmatrix}[1]{\begin{bmatrix*}[l] #1 \end{bmatrix*}}
+\newcommand{\cmatrix}[1]{\begin{bmatrix*}[c] #1 \end{bmatrix*}}
+\newcommand{\rmatrix}[1]{\begin{bmatrix*}[r] #1 \end{bmatrix*}}
+
+\newcommand{\lmatrix}[1]{\begin{bmatrix*}[l] #1 \end{bmatrix*}}
+  \renewcommand{\vec}[1]{
+ 	\IfLowercaseGreek{#1}{\boldsymbol{#1}}{\boldsymbol{\mathbf{#1}}}
+}
 %\else
 %      \ClassWarning{iiit-math}{Matrix macros could not be defined. Empheq required!}
 %\fi
